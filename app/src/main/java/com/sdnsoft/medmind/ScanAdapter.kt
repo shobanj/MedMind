@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 
 class ScanAdapter(model : ScanModel) : RecyclerView.Adapter<ScanAdapter.ScanViewHolder>() {
@@ -31,6 +32,8 @@ class ScanAdapter(model : ScanModel) : RecyclerView.Adapter<ScanAdapter.ScanView
         val detailsView = view.findViewById<ImageButton>(R.id.imageButton)
         detailsView.setOnClickListener {
             Toast.makeText(it.context, "Details clicked...", Toast.LENGTH_LONG).show()
+            // TODO Enable / disable FAB icons - var ma = parent.context.applicationContext as MainActivity
+            parent.findNavController().navigate(R.id.action_FirstFragment_to_scanItemDetailsFragment)
         }
 
         return ScanViewHolder(view)

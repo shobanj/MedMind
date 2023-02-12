@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_FirstFragment_to_createQRFragment"
             app:destination="@id/createQRFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_scanItemDetailsFragment"
+            app:destination="@id/scanItemDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -35,6 +38,15 @@
         tools:layout="@layout/fragment_create_qr">
         <action
             android:id="@+id/action_createQRFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/scanItemDetailsFragment"
+        android:name="com.sdnsoft.medmind.ScanItemDetailsFragment"
+        android:label="fragment_item_list"
+        tools:layout="@layout/fragment_item_list" >
+        <action
+            android:id="@+id/action_scanItemDetailsFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
 </navigation>
