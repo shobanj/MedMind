@@ -15,9 +15,6 @@
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
         <action
-            android:id="@+id/action_FirstFragment_to_createQRFragment"
-            app:destination="@id/createQRFragment" />
-        <action
             android:id="@+id/action_FirstFragment_to_scanItemDetailsFragment"
             app:destination="@id/scanItemDetailsFragment" />
     </fragment>
@@ -37,8 +34,9 @@
         android:label="@string/fragment_create_qr"
         tools:layout="@layout/fragment_create_qr">
         <action
-            android:id="@+id/action_createQRFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_createQRFragment_pop"
+            app:popUpTo="@id/createQRFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/scanItemDetailsFragment"
@@ -49,4 +47,15 @@
             android:id="@+id/action_scanItemDetailsFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.sdnsoft.medmind.SettingsFragment"
+        android:label="SettingsFragment" >
+        <action
+            android:id="@+id/action_settingsFragment_pop"
+            app:popUpTo="@id/settingsFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <action android:id="@+id/action_global_settingsFragment" app:destination="@id/settingsFragment" />
+    <action android:id="@+id/action_global_createQRFragment" app:destination="@id/createQRFragment" />
 </navigation>

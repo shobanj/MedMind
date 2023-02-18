@@ -98,9 +98,14 @@ class MainActivity : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
-            R.id.action_settings -> true
+            R.id.action_settings -> {
+                enableDisableFabButtons("hide")
+                findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.action_global_settingsFragment)
+                true
+            }
             R.id.action_create_qr -> {
-                findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.action_FirstFragment_to_createQRFragment)
+                enableDisableFabButtons("hide")
+                findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.action_global_createQRFragment)
                 true
             }
             R.id.action_clear_all_data -> {

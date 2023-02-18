@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.fragment.findNavController
+import androidx.preference.PreferenceManager
 import com.sdnsoft.medmind.databinding.FragmentSecondBinding
 import com.budiyev.android.codescanner.*
 import com.google.zxing.BarcodeFormat
@@ -61,6 +62,9 @@ class SecondFragment : Fragment() {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
 
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext() /* Activity context */)
+        val prefAutoFocus = sharedPreferences.getBoolean("auto_focus", true)
+
         val context = requireContext()
         codeScanner = CodeScanner(context, scannerView!!)
 
@@ -70,7 +74,7 @@ class SecondFragment : Fragment() {
         // ex. listOf(BarcodeFormat.QR_CODE)
         codeScanner.autoFocusMode = AutoFocusMode.SAFE // or CONTINUOUS
         codeScanner.scanMode = ScanMode.SINGLE // or CONTINUOUS or PREVIEW
-        codeScanner.isAutoFocusEnabled = false // Whether to enable auto focus or not
+        codeScanner.isAutoFocusEnabled = prefAutoFocus // Whether to enable auto focus or not
         codeScanner.isFlashEnabled = false // Whether to enable flash or not
 
         codeScanner.decodeCallback = DecodeCallback {
